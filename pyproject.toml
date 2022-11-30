@@ -16,8 +16,11 @@ classifiers = [
 Changelog = "https://github.com/jessecusack/melt-plumes/releases"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 click = ">=8.0.1"
+numpy = "^1.23.5"
+scipy = "^1.9.3"
+seawater = "^3.3.4"
 
 [tool.poetry.dev-dependencies]
 Pygments = ">=2.10.0"
