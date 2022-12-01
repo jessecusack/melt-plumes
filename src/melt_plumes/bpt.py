@@ -1,5 +1,6 @@
 from typing import Callable
 from typing import Iterable
+from typing import List
 from typing import Tuple
 from typing import Union
 
@@ -123,7 +124,7 @@ def bpt(
     Γ_S: float = 0.00062,
     C_d: float = 0.0025,
     **melt_kwargs,
-) -> list[int]:
+) -> List[int]:
     """Differential equations of buoyant plume theory for a line plume with ice melt.
 
     Parameters
