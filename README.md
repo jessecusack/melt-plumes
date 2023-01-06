@@ -3,7 +3,7 @@
 [![PyPI](https://img.shields.io/pypi/v/melt-plumes.svg)][pypi_]
 [![Status](https://img.shields.io/pypi/status/melt-plumes.svg)][status]
 [![Python Version](https://img.shields.io/pypi/pyversions/melt-plumes)][python version]
-[![License](https://img.shields.io/pypi/l/melt-plumes)][license]
+[![License](https://img.shields.io/github/license/jessecusack/melt-plumes)][license]
 
 [![Read the documentation at https://melt-plumes.readthedocs.io/](https://img.shields.io/readthedocs/melt-plumes/latest.svg?label=Read%20the%20Docs)][read the docs]
 [![Tests](https://github.com/jessecusack/melt-plumes/workflows/Tests/badge.svg)][tests]
