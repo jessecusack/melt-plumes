@@ -31,10 +31,10 @@
 
 ## Installation
 
-You can install _Melt Plumes_ via [pip] from [PyPI]:
+You can install _Melt Plumes_ via [pip] from [GitHub]:
 
 ```console
-$ pip install melt-plumes
+$ pip install git+https://github.com/jessecusack/melt-plumes
 ```
 
 ## Usage

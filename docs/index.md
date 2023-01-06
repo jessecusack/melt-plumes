@@ -14,6 +14,7 @@ hidden:
 maxdepth: 1
 ---
 
+test
 usage
 reference
 contributing
