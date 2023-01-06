@@ -1,10 +1,9 @@
 from typing import Callable
-from typing import Iterable
 from typing import List
+from typing import Sequence
 from typing import Tuple
 from typing import Union
 
-import numpy as np
 from seawater import pden
 from seawater import pres
 
@@ -113,7 +112,7 @@ def melt_rate(
 
 def bpt(
     z: float,
-    fluxes: Iterable[float],
+    fluxes: Sequence[float],
     T: Union[float, Callable[[float], float]],
     S: Union[float, Callable[[float], float]],
     α: float = 0.1,
@@ -133,10 +132,12 @@ def bpt(
             Height or negative depth (m).
         fluxes : array_like of float
             Plume fluxes of [mass, momentum, temperature, salt].
-        T : callable
+        T : callable or float
             Ocean (far-field) in-situ temperature profile as a function of height, T(z) (C).
-        S : callable
+            Can also be a constant value.
+        S : callable or float
             Ocean (far-field) practical salinity profile as a function of height, S(z) (PSU).
+            Can also be a constant value.
         α : float, optional
             Entrainment coefficient (m s-1).
         ρ_0 : float, optional
@@ -195,9 +196,9 @@ def bpt(
 
 def Δρ(
     z: float,
-    fluxes: Iterable[float],
-    T: float,
-    S: float,
+    fluxes: Sequence[float],
+    T: Union[float, Callable[[float], float]],
+    S: Union[float, Callable[[float], float]],
     lat: float = 60.0,
     *args,
 ) -> float:
@@ -213,8 +214,8 @@ def Δρ(
         S_o = S
 
     p = pres(-z, lat)  # Pressure (dbar)
-    ρ_o = pden(S_p, T_p, p, pr=0)  # Plume potential density (kg m-3)
-    ρ = pden(S_o, T_o, p, pr=0)  # Ocean (far-field) potential density (kg m-3)
+    ρ_o: float = pden(S_p, T_p, p, pr=0)  # Plume potential density (kg m-3)
+    ρ: float = pden(S_o, T_o, p, pr=0)  # Ocean (far-field) potential density (kg m-3)
     return ρ - ρ_o
 
 

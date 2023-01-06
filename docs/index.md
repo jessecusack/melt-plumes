@@ -14,7 +14,7 @@ hidden:
 maxdepth: 1
 ---
 
-test
+quick_start
 usage
 reference
 contributing
