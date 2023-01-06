@@ -213,11 +213,15 @@ def docs_build(session: Session) -> None:
         args.insert(0, "--color")
 
     session.install(".")
-    session.install("sphinx", "furo", "myst-parser")
+    session.install("sphinx", "furo", "matplotlib", "myst-nb", "jupytext")
 
     build_dir = Path("docs", "_build")
     if build_dir.exists():
         shutil.rmtree(build_dir)
+
+    jupyter_execute_dir = Path("docs", "jupyter_execute")
+    if jupyter_execute_dir.exists():
+        shutil.rmtree(jupyter_execute_dir)
 
     session.run("sphinx-build", *args)
 
@@ -227,10 +231,16 @@ def docs(session: Session) -> None:
     """Build and serve the documentation with live reloading on file changes."""
     args = session.posargs or ["--open-browser", "docs", "docs/_build"]
     session.install(".")
-    session.install("sphinx", "sphinx-autobuild", "furo", "myst-parser")
+    session.install(
+        "sphinx", "sphinx-autobuild", "furo", "myst-nb", "matplotlib", "jupytext"
+    )
 
     build_dir = Path("docs", "_build")
     if build_dir.exists():
         shutil.rmtree(build_dir)
+
+    jupyter_execute_dir = Path("docs", "jupyter_execute")
+    if jupyter_execute_dir.exists():
+        shutil.rmtree(jupyter_execute_dir)
 
     session.run("sphinx-autobuild", *args)
