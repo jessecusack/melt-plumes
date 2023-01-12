@@ -11,6 +11,7 @@ documentation = "https://melt-plumes.readthedocs.io"
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
 ]
+include = ["src/melt_plumes/data/*.csv", "src/melt_plumes/data/*.py"]
 
 [tool.poetry.urls]
 Changelog = "https://github.com/jessecusack/melt-plumes/releases"
