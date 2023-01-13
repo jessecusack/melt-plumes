@@ -4,8 +4,7 @@ from typing import Sequence
 from typing import Tuple
 from typing import Union
 
-from seawater import pden
-from seawater import pres
+import seawater as sw
 
 
 def fp(
@@ -76,11 +75,14 @@ def melt_rate(
         T_i : float, optional
             Ice temperature, default -10.0 (C).
         λ_1 : float, optional
-            Variation of freezing point with salinity in linear freezing point of seawater, default -0.0573 (C PSU-1).
+            Variation of freezing point with salinity in linear freezing point
+            of seawater, default -0.0573 (C PSU-1).
         λ_2 : float, optional
-            Freezing point offset in linear freezing point of seawater, default 0.0832 (C).
+            Freezing point offset in linear freezing point of seawater, 
+            default 0.0832 (C).
         λ_3 : float, optional
-            Variation of freezing point with depth in linear freezing point of seawater, default 0.000761 (C m-1).
+            Variation of freezing point with depth in linear freezing point of
+            seawater, default 0.000761 (C m-1).
         L : float, optional
             Latent heat of fusion, default 335000.0 (J kg-1).
         c_i : float, optional
@@ -133,11 +135,11 @@ def bpt(
         fluxes : array_like of float
             Plume fluxes of [mass, momentum, temperature, salt].
         T : callable or float
-            Ocean (far-field) in-situ temperature profile as a function of height, T(z) (C).
-            Can also be a constant value.
+            Ocean (far-field) in-situ temperature profile as a function of 
+            height, T(z) (C), or a constant value. Default 5.
         S : callable or float
-            Ocean (far-field) practical salinity profile as a function of height, S(z) (PSU).
-            Can also be a constant value.
+            Ocean (far-field) practical salinity profile as a function of 
+            height, S(z) (PSU), or a constant value. Default 25.
         α : float, optional
             Entrainment coefficient (m s-1).
         ρ_0 : float, optional
@@ -179,9 +181,9 @@ def bpt(
         T_o = T
         S_o = S
 
-    p = pres(-z, lat)  # Pressure (dbar)
-    ρ_o = pden(S_p, T_p, p, pr=0)  # Plume potential density (kg m-3)
-    ρ = pden(S_o, T_o, p, pr=0)  # Ocean (far-field) potential density (kg m-3)
+    p = sw.pres(-z, lat)  # Pressure (dbar)
+    ρ_o = sw.pden(S_p, T_p, p, pr=0)  # Plume potential density (kg m-3)
+    ρ = sw.pden(S_o, T_o, p, pr=0)  # Ocean (far-field) potential density (kg m-3)
     gp = g * (ρ_o - ρ) / ρ_0  # Reduced gravity (m s-2)
 
     dfluxes = [0, 0, 0, 0]
@@ -213,9 +215,11 @@ def Δρ(
         T_o = T
         S_o = S
 
-    p = pres(-z, lat)  # Pressure (dbar)
-    ρ_o: float = pden(S_p, T_p, p, pr=0)  # Plume potential density (kg m-3)
-    ρ: float = pden(S_o, T_o, p, pr=0)  # Ocean (far-field) potential density (kg m-3)
+    p = sw.pres(-z, lat)  # Pressure (dbar)
+    ρ_o: float = sw.pden(S_p, T_p, p, pr=0)  # Plume potential density (kg m-3)
+    ρ: float = sw.pden(
+        S_o, T_o, p, pr=0
+    )  # Ocean (far-field) potential density (kg m-3)
     return ρ - ρ_o
 
 
