@@ -42,6 +42,7 @@ zi = -180  # Starting height (m)
 ρ_0 = 1025  # Density constant (kg m-3)
 g = -9.81  # Gravity (m s-2)
 Si = 0.0000001  # Need a small initial salinity apparently!
+u = 0.0  # Background horizontal ocean velocity (m s-1)
 
 # Derived initial conditions
 Qm2s = Q / W  # Discharge rate per m (m2 s-1)
@@ -60,7 +61,7 @@ T_flux = Qm2s * Ti  # Temperature flux (C m2 s-1)
 S_flux = Qm2s * Si  # Salt flux (PSU m2 s-1)
 
 fluxes0 = [mass_flux, mom_flux, T_flux, S_flux]
-args = (T, S, α, ρ_0, g, lat)
+args = (T, S, u, α, ρ_0, g, lat)
 
 z_eval = np.arange(zi, -d[0], 1)
 
@@ -148,6 +149,7 @@ zi = -165  # Height (m)
 ρ_0 = 1025  # Density constant (kg m-3)
 g = -9.81  # Gravity (m s-2)
 Si = 0.0000001  # Need a small initial salinity apparently!
+u = 0.0  # Background horizontal ocean velocity (m s-1)
 
 # Derived
 Qm2s = Q/W  # Discharge rate per m (m2 s-1)
@@ -165,7 +167,7 @@ T_flux = Qm2s * Ti  # Temperature flux (C m2 s-1)
 S_flux = Qm2s * Si  # Salt flux (PSU m2 s-1)
 
 fluxes0 = [mass_flux, mom_flux, T_flux, S_flux]
-args = (Tz, Sz, α, ρ_0, g, lat)
+args = (Tz, Sz, u, α, ρ_0, g, lat)
 
 z_eval = np.arange(zi, -d[0], 1)
 
@@ -234,6 +236,7 @@ zi = -165  # Height (m)
 ρ_0 = 1025  # Density constant (kg m-3)
 g = -9.81  # Gravity (m s-2)
 Si = 0.0000001  # Need a small initial salinity apparently!
+u = 0.0  # Background horizontal ocean velocity (m s-1)
 n_plumes_max = 1000  # Maximum number of plumes
 dz = 0.1  # solver evaluation spacing (m)
 
@@ -252,7 +255,7 @@ mom_flux = Qm2s * wi  # Momentum flux (m3 s-2)
 T_flux = Qm2s * Ti  # Temperature flux (C m2 s-1)
 S_flux = Qm2s * Si  # Salt flux (PSU m2 s-1)
 
-args = (Tz, Sz, α, ρ_0, g, lat)
+args = (Tz, Sz, u, α, ρ_0, g, lat)
 fluxes0 = [mass_flux, mom_flux, T_flux, S_flux]
 
 z_eval = np.arange(zi, -d[0] - dz/2, dz)
@@ -275,7 +278,7 @@ for n_plumes in range(1, n_plumes_max+1):
 
         text = f"""
         Number of plumes = {n_plumes}
-        Final plume initial initial height = {zi:1.2f}  m
+        Starting height of last plume = {zi:1.2f}  m
         """
 
         print(dedent(text))
@@ -352,6 +355,36 @@ axs[1, 0].plot(w, z_out, "C1")
 axs[1, 0].set_xlabel("Vertical velocity [m s$^{-1}$]")
 
 axs[1, 1].plot(R, z_out, "C1")
+axs[1, 1].set_xlabel("Thickness [m]")
+
+for ax in axs[:, 0]:
+    ax.set_ylabel("z [m]")
+
+fig.tight_layout()
+```
+
+## Ambient plume with and without horizontal velocity
+
+```{code-cell} ipython3
+fig, axs = plt.subplots(2, 2, figsize=(6, 6), sharey=True)
+
+w, R, T_o, S_o, z_out = solve.plume(-130, 0.0000001, 0.2, T=Tz, S=Sz, u=0.0)
+w_u, R_u, T_o_u, S_o_u, z_out_u = solve.plume(-130, 0.0000001, 0.2, T=Tz, S=Sz, u=0.05)
+
+axs[0, 0].plot(T_o, z_out, label="")
+axs[0, 0].plot(T_o_u, z_out_u, label="+u")
+axs[0, 0].set_xlabel("Temperature [C$^\circ$]")
+
+axs[0, 1].plot(S_o, z_out)
+axs[0, 1].plot(S_o_u, z_out_u)
+axs[0, 1].set_xlabel("Salinity [PSU]")
+
+axs[1, 0].plot(w, z_out)
+axs[1, 0].plot(w_u, z_out_u)
+axs[1, 0].set_xlabel("Vertical velocity [m s$^{-1}$]")
+
+axs[1, 1].plot(R, z_out)
+axs[1, 1].plot(R_u, z_out_u)
 axs[1, 1].set_xlabel("Thickness [m]")
 
 for ax in axs[:, 0]:

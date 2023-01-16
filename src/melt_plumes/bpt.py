@@ -78,7 +78,7 @@ def melt_rate(
             Variation of freezing point with salinity in linear freezing point
             of seawater, default -0.0573 (C PSU-1).
         λ_2 : float, optional
-            Freezing point offset in linear freezing point of seawater, 
+            Freezing point offset in linear freezing point of seawater,
             default 0.0832 (C).
         λ_3 : float, optional
             Variation of freezing point with depth in linear freezing point of
@@ -117,6 +117,7 @@ def bpt(
     fluxes: Sequence[float],
     T: Union[float, Callable[[float], float]],
     S: Union[float, Callable[[float], float]],
+    u: Union[float, Callable[[float], float]] = 0.0,
     α: float = 0.1,
     ρ_0: float = 1025.0,
     g: float = -9.81,
@@ -135,11 +136,14 @@ def bpt(
         fluxes : array_like of float
             Plume fluxes of [mass, momentum, temperature, salt].
         T : callable or float
-            Ocean (far-field) in-situ temperature profile as a function of 
+            Ocean (far-field) in-situ temperature profile as a function of
             height, T(z) (C), or a constant value. Default 5.
         S : callable or float
-            Ocean (far-field) practical salinity profile as a function of 
+            Ocean (far-field) practical salinity profile as a function of
             height, S(z) (PSU), or a constant value. Default 25.
+        u : callable or float
+            Additional horizontal ocean velocity as a function of height, 
+            u(z) (m s-1), or a constant value. Default 0.
         α : float, optional
             Entrainment coefficient (m s-1).
         ρ_0 : float, optional
@@ -162,6 +166,7 @@ def bpt(
         dfluxes : list
             Vertical derivative of plume fluxes of [mass, momentum, temperature, salt]
     """
+    # Current state
     mass_flux = fluxes[0]  # Mass flux (m2 s-1)
     mom_flux = fluxes[1]  # Momentum flux (m3 s-2)
     T_flux = fluxes[2]  # Temperature flux (C m2 s-1)
@@ -172,15 +177,26 @@ def bpt(
     T_p = T_flux / mass_flux  # Plume temperature (C)
     S_p = S_flux / mass_flux  # Plume salinity (PSU)
 
-    m, T_b, S_b = melt_rate(-z, T_p, S_p, w, Γ_T=Γ_T, Γ_S=Γ_S, C_d=C_d, **melt_kwargs)
-
-    if callable(T) and callable(S):
-        T_o = T(z)
+    if callable(S):
         S_o = S(z)
     else:
-        T_o = T
         S_o = S
 
+    if callable(T):
+        T_o = T(z)
+    else:
+        T_o = T
+
+    if callable(u):
+        u_o = u(z)
+    else:
+        u_o = u
+
+    # Velocity relevat to the melt rate calculation
+    U = (u_o**2 + w**2)**0.5
+
+    # Parameters for the ODEs
+    m, T_b, S_b = melt_rate(-z, T_p, S_p, U, Γ_T=Γ_T, Γ_S=Γ_S, C_d=C_d, **melt_kwargs)
     p = sw.pres(-z, lat)  # Pressure (dbar)
     ρ_o = sw.pden(S_p, T_p, p, pr=0)  # Plume potential density (kg m-3)
     ρ = sw.pden(S_o, T_o, p, pr=0)  # Ocean (far-field) potential density (kg m-3)
@@ -190,9 +206,9 @@ def bpt(
     dfluxes[0] = α * w + m  # Mass
     dfluxes[1] = R * gp - C_d * w**2  # Momentum
     dfluxes[2] = (
-        α * w * T_o + m * T_b - C_d**0.5 * w * Γ_T * (T_p - T_b)
+        α * w * T_o + m * T_b - C_d**0.5 * U * Γ_T * (T_p - T_b)
     )  # Temperature
-    dfluxes[3] = α * w * S_o + m * S_b - C_d**0.5 * w * Γ_S * (S_p - S_b)  # Salinity
+    dfluxes[3] = α * w * S_o + m * S_b - C_d**0.5 * U * Γ_S * (S_p - S_b)  # Salinity
     return dfluxes
 
 
