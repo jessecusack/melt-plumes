@@ -142,7 +142,7 @@ def bpt(
             Ocean (far-field) practical salinity profile as a function of
             height, S(z) (PSU), or a constant value. Default 25.
         u : callable or float
-            Additional horizontal ocean velocity as a function of height, 
+            Additional horizontal ocean velocity as a function of height,
             u(z) (m s-1), or a constant value. Default 0.
         α : float, optional
             Entrainment coefficient (m s-1).
@@ -193,7 +193,7 @@ def bpt(
         u_o = u
 
     # Velocity relevat to the melt rate calculation
-    U = (u_o**2 + w**2)**0.5
+    U = (u_o**2 + w**2) ** 0.5
 
     # Parameters for the ODEs
     m, T_b, S_b = melt_rate(-z, T_p, S_p, U, Γ_T=Γ_T, Γ_S=Γ_S, C_d=C_d, **melt_kwargs)
@@ -217,6 +217,7 @@ def Δρ(
     fluxes: Sequence[float],
     T: Union[float, Callable[[float], float]],
     S: Union[float, Callable[[float], float]],
+    u: Union[float, Callable[[float], float]] = 0.0,
     lat: float = 60.0,
     *args,
 ) -> float:

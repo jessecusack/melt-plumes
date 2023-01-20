@@ -235,7 +235,7 @@ lat = 60.0  # Latitude
 zi = -165  # Height (m)
 ρ_0 = 1025  # Density constant (kg m-3)
 g = -9.81  # Gravity (m s-2)
-Si = 0.0000001  # Need a small initial salinity apparently!
+Si = 1e-8  # Need a small initial salinity apparently!
 u = 0.0  # Background horizontal ocean velocity (m s-1)
 n_plumes_max = 1000  # Maximum number of plumes
 dz = 0.1  # solver evaluation spacing (m)
@@ -391,4 +391,52 @@ for ax in axs[:, 0]:
     ax.set_ylabel("z [m]")
 
 fig.tight_layout()
+```
+
+## Plume chain with nonuniform horizontal velocity
+
+```{code-cell} ipython3
+# Linear velocity profile
+def u(z, u0, uzmin, zmin):
+    dudz = (uzmin - u0)/zmin
+    return dudz*z + u0
+
+uz = lambda z: u(z, 0.1, 0.02, -165)
+
+w, R, T_o, S_o, z_out, idx = solve.plume_chain(-165, 0.000001, 0.1, T=Tz, S=Sz, u=uz, W=1000)
+```
+
+```{code-cell} ipython3
+fig, ax = plt.subplots()
+ax.plot(uz(z_out), z_out)
+ax.set_xlabel("Horizontal velocity [m s$^{-1}$]")
+ax.set_ylabel("Height [m]")
+
+fig, axs = plt.subplots(2, 2, figsize=(6, 6), sharey=True)
+
+axs[0, 0].plot(T_o, z_out, "C1")
+axs[0, 0].plot(T_o[idx == 10], z_out[idx == 10], "red")
+axs[0, 0].set_xlabel("Temperature [C$^\circ$]")
+axs[0, 0].set_xlim(4, 8)
+
+axs[0, 1].plot(S_o, z_out, "C1")
+axs[0, 1].plot(S_o[idx == 10], z_out[idx == 10], "red")
+axs[0, 1].set_xlabel("Salinity [PSU]")
+axs[0, 1].set_xlim(26, 29)
+
+axs[1, 0].plot(w, z_out, "C1")
+axs[1, 0].plot(w[idx == 10], z_out[idx == 10], "red")
+axs[1, 0].set_xlabel("Vertical velocity [m s$^{-1}$]")
+
+axs[1, 1].plot(R, z_out, "C1")
+axs[1, 1].plot(R[idx == 10], z_out[idx == 10], "red")
+axs[1, 1].set_xlabel("Thickness [m]")
+
+axs[0, 0].plot(T, -d, "C0", label="ambient")
+axs[0, 1].plot(S, -d, "C0")
+axs[0, 0].legend()
+```
+
+```{code-cell} ipython3
+
 ```
