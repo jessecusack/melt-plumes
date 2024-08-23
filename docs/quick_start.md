@@ -404,6 +404,9 @@ def u(z, u0, uzmin, zmin):
 uz = lambda z: u(z, 0.1, 0.02, -165)
 
 w, R, T_o, S_o, z_out, idx = solve.plume_chain(-165, 0.000001, 0.1, T=Tz, S=Sz, u=uz, W=1000)
+
+# Comopare to constant velocity case
+w_const, R_const, _, _, z_out_const, _ = solve.plume_chain(-165, 0.000001, 0.1, T=Tz, S=Sz, u=0.06, W=1000)
 ```
 
 ```{code-cell} ipython3
@@ -425,16 +428,44 @@ axs[0, 1].set_xlabel("Salinity [PSU]")
 axs[0, 1].set_xlim(26, 29)
 
 axs[1, 0].plot(w, z_out, "C1")
+axs[1, 0].plot(w_const, z_out_const, "C2")
 axs[1, 0].plot(w[idx == 10], z_out[idx == 10], "red")
 axs[1, 0].set_xlabel("Vertical velocity [m s$^{-1}$]")
 
-axs[1, 1].plot(R, z_out, "C1")
+axs[1, 1].plot(R, z_out, "C1", label="sheared")
+axs[1, 1].plot(R_const, z_out_const, "C2", label="uniform")
 axs[1, 1].plot(R[idx == 10], z_out[idx == 10], "red")
 axs[1, 1].set_xlabel("Thickness [m]")
 
 axs[0, 0].plot(T, -d, "C0", label="ambient")
 axs[0, 1].plot(S, -d, "C0")
 axs[0, 0].legend()
+axs[1, 1].legend()
+```
+
+## The freezing point approximation
+
+```{code-cell} ipython3
+d = np.linspace(0, 1000, 50)
+S = np.linspace(20, 36, 30)
+
+fpmin = -2.8
+fpmax = -0.4
+
+dg, Sg = np.meshgrid(d, S)
+
+Tlinear = bpt.fp(-dg, Sg)
+
+Teos80 = sw.fp(Sg, sw.pres(dg, 60))
+
+fig, axs = plt.subplots(1, 3, sharex=True, sharey=True, figsize=(11, 3))
+PC0 = axs[0].pcolormesh(dg, Sg, Teos80, vmin=fpmin, vmax=fpmax)
+axs[1].pcolormesh(dg, Sg, Tlinear, vmin=fpmin, vmax=fpmax)
+PC1 = axs[2].pcolormesh(dg, Sg, Tlinear - Teos80, cmap="plasma")
+
+plt.colorbar(PC0, cax=fig.add_axes((0.2, 1.0, 0.3, 0.05)), orientation="horizontal")
+plt.colorbar(PC1, cax=fig.add_axes((0.93, 0.1, 0.015, 0.8)))
+    
 ```
 
 ```{code-cell} ipython3
