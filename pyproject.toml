@@ -1,55 +1,37 @@
-[tool.poetry]
+[project]
+authors = [
+    {name = "Jesse Cusack", email = "jesse.cusack@oregonstate.edu"},
+]
+license = {text = "MIT"}
+requires-python = ">3.11"
+dependencies = [
+    "numpy>=1.24.4",
+    "scipy>=1.10.1",
+    "seawater>=3.3.5",
+]
 name = "melt-plumes"
 version = "0.1.0"
 description = "Melt Plumes"
-authors = ["Jesse Cusack <jesse.cusack@oregonstate.edu>"]
-license = "MIT"
 readme = "README.md"
+
+[project.urls]
+Changelog = "https://github.com/jessecusack/melt-plumes/releases"
 homepage = "https://github.com/jessecusack/melt-plumes"
 repository = "https://github.com/jessecusack/melt-plumes"
 documentation = "https://melt-plumes.readthedocs.io"
-classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.14.1",
+    "myst-nb<1.0.0,>=0.17.1",
+    "pytest>=8.3.5",
+    "ruff>=0.12.11",
+    "scipy-stubs>=1.16.1.1",
 ]
-include = ["src/melt_plumes/data/*.csv", "src/melt_plumes/data/*.py"]
-
-[tool.poetry.urls]
-Changelog = "https://github.com/jessecusack/melt-plumes/releases"
-
-[tool.poetry.dependencies]
-python = "^3.8"
-numpy = "^1.23.5"
-scipy = "^1.9.3"
-seawater = "^3.3.4"
-
-[tool.poetry.dev-dependencies]
-Pygments = ">=2.10.0"
-black = ">=21.10b0"
-coverage = {extras = ["toml"], version = ">=6.2"}
-darglint = ">=1.8.1"
-flake8 = ">=4.0.1"
-flake8-bandit = ">=2.1.2"
-flake8-bugbear = ">=21.9.2"
-flake8-docstrings = ">=1.6.0"
-flake8-rst-docstrings = ">=0.2.5"
-furo = ">=2021.11.12"
-isort = ">=5.10.1"
-mypy = ">=0.930"
-pep8-naming = ">=0.12.1"
-pre-commit = ">=2.16.0"
-pre-commit-hooks = ">=4.1.0"
-pytest = ">=6.2.5"
-pyupgrade = ">=2.29.1"
-safety = ">=1.10.3"
-sphinx = "5.3.0"
-sphinx-autobuild = ">=2021.3.14"
-typeguard = ">=2.13.3"
-xdoctest = {extras = ["colors"], version = ">=0.15.10"}
-jupytext = "1.14.4"
-matplotlib = "^3.6.2"
-
-[tool.poetry.group.dev.dependencies]
-myst-nb = "^0.17.1"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -79,7 +61,3 @@ ignore_missing_imports = true
 plugins = [
   "numpy.typing.mypy_plugin"
 ]
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
