@@ -1,0 +1,891 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="License" href="license.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
+        <title>Melt Plumes documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="#"><div class="brand">Melt Plumes  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+  
+  <span class="sidebar-brand-text">Melt Plumes  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/index.md.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <div class="toctree-wrapper compound">
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="melt-plumes">
+<h1>Melt Plumes<a class="headerlink" href="#melt-plumes" title="Link to this heading">¶</a></h1>
+<p>The documentation starts with the nuts and bolts. If you want to skip some details, go straight to the section Simple Solver Interface below.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">itgr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">melt_plumes.bpt</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bpt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seawater</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/melt-plumes/melt-plumes/src/melt_plumes/bpt.py:3: UserWarning: The seawater library is deprecated! Please use gsw instead.
+  import seawater as sw
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plume-in-a-homogeneous-ocean">
+<h2>Plume in a homogeneous ocean<a class="headerlink" href="#plume-in-a-homogeneous-ocean" title="Link to this heading">¶</a></h2>
+<p>Set up ocean conditions for line plume. Below we use constant temperature and salinity ocean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">201.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>  <span class="c1"># Depths (m)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">15.0</span>  <span class="c1"># (degree_C)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="mf">25.0</span>  <span class="c1"># (PSU)</span>
+
+<span class="c1"># Initial conditions</span>
+<span class="n">W</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Channel width (m)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="mf">50.0</span>  <span class="c1"># Discharge rate (m3 s-1)</span>
+<span class="n">α</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Entrainment coefficient</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="mf">60.0</span>  <span class="c1"># Latitude</span>
+<span class="n">zi</span> <span class="o">=</span> <span class="o">-</span><span class="mi">180</span>  <span class="c1"># Starting height (m)</span>
+<span class="n">ρ_0</span> <span class="o">=</span> <span class="mi">1025</span>  <span class="c1"># Density constant (kg m-3)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.81</span>  <span class="c1"># Gravity (m s-2)</span>
+<span class="n">Si</span> <span class="o">=</span> <span class="mf">0.0000001</span>  <span class="c1"># Need a small initial salinity apparently!</span>
+<span class="n">u</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Background horizontal ocean velocity (m s-1)</span>
+
+<span class="c1"># Derived initial conditions</span>
+<span class="n">Qm2s</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">/</span> <span class="n">W</span>  <span class="c1"># Discharge rate per m (m2 s-1)</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pres</span><span class="p">(</span><span class="o">-</span><span class="n">zi</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>  <span class="c1"># Pressure (dbar)</span>
+<span class="n">Ti</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">fp</span><span class="p">(</span><span class="n">Si</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>  <span class="c1"># Temperature is the freezing point (C)</span>
+<span class="n">ρi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pden</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Far-field ocean density (kg m-3)</span>
+<span class="n">ρ_oi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pden</span><span class="p">(</span><span class="n">Si</span><span class="p">,</span> <span class="n">Ti</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Plume density (kg m-3)</span>
+<span class="n">gpi</span> <span class="o">=</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span><span class="n">ρ_oi</span> <span class="o">-</span> <span class="n">ρi</span><span class="p">)</span> <span class="o">/</span> <span class="n">ρ_0</span>  <span class="c1"># Reduced gravity (m s-2)</span>
+<span class="c1"># Vertical velocity (m s-1), from balance of momentum and buoyancy for a line plume</span>
+<span class="n">wi</span> <span class="o">=</span> <span class="p">(</span><span class="n">gpi</span> <span class="o">*</span> <span class="n">Qm2s</span> <span class="o">/</span> <span class="n">α</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">Ri</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">/</span> <span class="n">wi</span>  <span class="c1"># Radius or thickness (m)</span>
+
+<span class="n">mass_flux</span> <span class="o">=</span> <span class="n">Qm2s</span>  <span class="c1"># Mass flux (m2 s-1)</span>
+<span class="n">mom_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">wi</span>  <span class="c1"># Momentum flux (m3 s-2)</span>
+<span class="n">T_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">Ti</span>  <span class="c1"># Temperature flux (C m2 s-1)</span>
+<span class="n">S_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">Si</span>  <span class="c1"># Salt flux (PSU m2 s-1)</span>
+
+<span class="n">fluxes0</span> <span class="o">=</span> <span class="p">[</span><span class="n">mass_flux</span><span class="p">,</span> <span class="n">mom_flux</span><span class="p">,</span> <span class="n">T_flux</span><span class="p">,</span> <span class="n">S_flux</span><span class="p">]</span>
+<span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">α</span><span class="p">,</span> <span class="n">ρ_0</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+
+<span class="n">z_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">zi</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">itgr</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span>
+    <span class="n">bpt</span><span class="o">.</span><span class="n">bpt</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">zi</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="n">fluxes0</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;RK45&quot;</span><span class="p">,</span>
+    <span class="n">t_eval</span><span class="o">=</span><span class="n">z_eval</span><span class="p">,</span>
+    <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+    <span class="n">events</span><span class="o">=</span><span class="n">bpt</span><span class="o">.</span><span class="n">Δρ</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">mass_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">mom_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">T_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">S_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">mom_flux</span> <span class="o">/</span> <span class="n">mass_flux</span>  <span class="c1"># Plume vertical velocity (m s-1)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">mass_flux</span> <span class="o">/</span> <span class="n">w</span>  <span class="c1"># Plume thickness or radius (m)</span>
+<span class="n">T_o</span> <span class="o">=</span> <span class="n">T_flux</span> <span class="o">/</span> <span class="n">mass_flux</span>  <span class="c1"># Plume temperature (C)</span>
+<span class="n">S_o</span> <span class="o">=</span> <span class="n">S_flux</span> <span class="o">/</span> <span class="n">mass_flux</span>  <span class="c1"># Plume salinity (PSU)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The plume theory equations describe fluxes of quantities such as momentum and buoyancy. Typical measureable quantities such as velocity and temperature are derived from the fluxes. Below we plot the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_out</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">t</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">T</span><span class="p">),</span> <span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ambient&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;plume&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature [C$^\circ$]&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">S</span><span class="p">),</span> <span class="o">-</span><span class="n">d</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Salinity [PSU]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Vertical velocity [m s$^{-1}$]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Thickness [m]&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;z [m]&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+/tmp/ipykernel_2201/588080408.py:7: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+  axs[0, 0].set_xlabel(&quot;Temperature [C$^\circ$]&quot;)
+</pre></div>
+</div>
+<img alt="_images/2c4b6967dcd72775f4834aa2cca41ccc222edcd7d8bb28a63574b03801a9b107.png" src="_images/2c4b6967dcd72775f4834aa2cca41ccc222edcd7d8bb28a63574b03801a9b107.png" />
+</div>
+</div>
+</section>
+<section id="plumes-in-realistic-stratification">
+<h2>Plumes in realistic stratification<a class="headerlink" href="#plumes-in-realistic-stratification" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">melt-plumes</span></code> package contains some data from a fjord in Alaska (LeConte Bay or Xeitl Sit’ in Tlingit).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">melt_plumes</span><span class="w"> </span><span class="kn">import</span> <span class="n">helpers</span>
+
+<span class="n">d</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">load_LeConte_CTD</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Depth [m]&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Salinity [PSU]&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature [C$^\circ$]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+&lt;&gt;:11: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+/tmp/ipykernel_2201/2474716005.py:11: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+  axs[1].set_xlabel(&quot;Temperature [C$^\circ$]&quot;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Temperature [C$^\\circ$]&#39;)
+</pre></div>
+</div>
+<img alt="_images/8bfd5a9d9d63b3f075457915cf883cb57bb5b84f9b75f91a39f57a65ed83e570.png" src="_images/8bfd5a9d9d63b3f075457915cf883cb57bb5b84f9b75f91a39f57a65ed83e570.png" />
+</div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">interp1d</span></code> to generate a function that linearly interpolates the data between observed depths. The buoyant plume theory equations can then be solved using this interpolating function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">itpl</span>
+
+<span class="n">Sz</span> <span class="o">=</span> <span class="n">itpl</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+<span class="n">Tz</span> <span class="o">=</span> <span class="n">itpl</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Initial conditions</span>
+<span class="n">W</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Channel width (m)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># Discharge rate (m3 s-1)</span>
+<span class="n">α</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Entrainment coefficient</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="mf">60.0</span>  <span class="c1"># Latitude</span>
+<span class="n">zi</span> <span class="o">=</span> <span class="o">-</span><span class="mi">165</span>  <span class="c1"># Height (m)</span>
+<span class="n">ρ_0</span> <span class="o">=</span> <span class="mi">1025</span>  <span class="c1"># Density constant (kg m-3)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.81</span>  <span class="c1"># Gravity (m s-2)</span>
+<span class="n">Si</span> <span class="o">=</span> <span class="mf">0.0000001</span>  <span class="c1"># Need a small initial salinity apparently!</span>
+<span class="n">u</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Background horizontal ocean velocity (m s-1)</span>
+
+<span class="c1"># Derived</span>
+<span class="n">Qm2s</span> <span class="o">=</span> <span class="n">Q</span><span class="o">/</span><span class="n">W</span>  <span class="c1"># Discharge rate per m (m2 s-1)</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pres</span><span class="p">(</span><span class="o">-</span><span class="n">zi</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>  <span class="c1"># Pressure (dbar)</span>
+<span class="n">Ti</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">fp</span><span class="p">(</span><span class="n">Si</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>  <span class="c1"># Temperature is the freezing point (C)</span>
+<span class="n">ρi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pden</span><span class="p">(</span><span class="n">Sz</span><span class="p">(</span><span class="n">zi</span><span class="p">),</span> <span class="n">Tz</span><span class="p">(</span><span class="n">zi</span><span class="p">),</span> <span class="n">pi</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Far-field ocean density (kg m-3)</span>
+<span class="n">ρ_oi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pden</span><span class="p">(</span><span class="n">Si</span><span class="p">,</span> <span class="n">Ti</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Plume density (kg m-3)</span>
+<span class="n">gpi</span> <span class="o">=</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span><span class="n">ρ_oi</span> <span class="o">-</span> <span class="n">ρi</span><span class="p">)</span> <span class="o">/</span> <span class="n">ρ_0</span>  <span class="c1"># Reduced gravity (m s-2)</span>
+<span class="n">wi</span> <span class="o">=</span> <span class="p">(</span><span class="n">gpi</span> <span class="o">*</span> <span class="n">Qm2s</span> <span class="o">/</span> <span class="n">α</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Vertical velocity (m s-1), from balance of momentum and buoyancy for a line plume</span>
+<span class="n">Ri</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">/</span> <span class="n">wi</span>  <span class="c1"># Radius or thickness (m)</span>
+
+<span class="n">mass_flux</span> <span class="o">=</span> <span class="n">Qm2s</span>  <span class="c1"># Mass flux (m2 s-1)</span>
+<span class="n">mom_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">wi</span>  <span class="c1"># Momentum flux (m3 s-2)</span>
+<span class="n">T_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">Ti</span>  <span class="c1"># Temperature flux (C m2 s-1)</span>
+<span class="n">S_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">Si</span>  <span class="c1"># Salt flux (PSU m2 s-1)</span>
+
+<span class="n">fluxes0</span> <span class="o">=</span> <span class="p">[</span><span class="n">mass_flux</span><span class="p">,</span> <span class="n">mom_flux</span><span class="p">,</span> <span class="n">T_flux</span><span class="p">,</span> <span class="n">S_flux</span><span class="p">]</span>
+<span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">Tz</span><span class="p">,</span> <span class="n">Sz</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">α</span><span class="p">,</span> <span class="n">ρ_0</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+
+<span class="n">z_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">zi</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">itgr</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span>
+    <span class="n">bpt</span><span class="o">.</span><span class="n">bpt</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">zi</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="n">fluxes0</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;RK45&quot;</span><span class="p">,</span>
+    <span class="n">t_eval</span><span class="o">=</span><span class="n">z_eval</span><span class="p">,</span>
+    <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+    <span class="n">events</span><span class="o">=</span><span class="n">bpt</span><span class="o">.</span><span class="n">Δρ</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">mass_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">mom_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">T_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">S_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">mom_flux</span> <span class="o">/</span> <span class="n">mass_flux</span>  <span class="c1"># Plume vertical velocity (m s-1)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">mass_flux</span> <span class="o">/</span> <span class="n">w</span>  <span class="c1"># Plume thickness or radius (m)</span>
+<span class="n">T_o</span> <span class="o">=</span> <span class="n">T_flux</span> <span class="o">/</span> <span class="n">mass_flux</span>  <span class="c1"># Plume temperature (C)</span>
+<span class="n">S_o</span> <span class="o">=</span> <span class="n">S_flux</span> <span class="o">/</span> <span class="n">mass_flux</span>  <span class="c1"># Plume salinity (PSU)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_out</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">t</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ambient&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;plume&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature [C$^\circ$]&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Salinity [PSU]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Vertical velocity [m s$^{-1}$]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Thickness [m]&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;z [m]&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+/tmp/ipykernel_2201/3723151647.py:7: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+  axs[0, 0].set_xlabel(&quot;Temperature [C$^\circ$]&quot;)
+</pre></div>
+</div>
+<img alt="_images/4f589469ab604a3cce758430a5e6a11560ab4e000f9bbff3a5b4d314c38d0ce8.png" src="_images/4f589469ab604a3cce758430a5e6a11560ab4e000f9bbff3a5b4d314c38d0ce8.png" />
+</div>
+</div>
+</section>
+<section id="a-chain-of-plumes">
+<h2>A chain of plumes<a class="headerlink" href="#a-chain-of-plumes" title="Link to this heading">¶</a></h2>
+<p>Loop over the prior exmaple.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">textwrap</span><span class="w"> </span><span class="kn">import</span> <span class="n">dedent</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Initial conditions</span>
+<span class="n">W</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Channel width (m)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="mf">0.000001</span>  <span class="c1"># Discharge rate (m3 s-1)</span>
+<span class="n">α</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Entrainment coefficient</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="mf">60.0</span>  <span class="c1"># Latitude</span>
+<span class="n">zi</span> <span class="o">=</span> <span class="o">-</span><span class="mi">165</span>  <span class="c1"># Height (m)</span>
+<span class="n">ρ_0</span> <span class="o">=</span> <span class="mi">1025</span>  <span class="c1"># Density constant (kg m-3)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.81</span>  <span class="c1"># Gravity (m s-2)</span>
+<span class="n">Si</span> <span class="o">=</span> <span class="mf">1e-8</span>  <span class="c1"># Need a small initial salinity apparently!</span>
+<span class="n">u</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Background horizontal ocean velocity (m s-1)</span>
+<span class="n">n_plumes_max</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Maximum number of plumes</span>
+<span class="n">dz</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># solver evaluation spacing (m)</span>
+
+<span class="c1"># Derived</span>
+<span class="n">Qm2s</span> <span class="o">=</span> <span class="n">Q</span><span class="o">/</span><span class="n">W</span>  <span class="c1"># Discharge rate per m (m2 s-1)</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pres</span><span class="p">(</span><span class="o">-</span><span class="n">zi</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>  <span class="c1"># Pressure (dbar)</span>
+<span class="n">Ti</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">fp</span><span class="p">(</span><span class="n">Si</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>  <span class="c1"># Temperature is the freezing point (C)</span>
+<span class="n">ρi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pden</span><span class="p">(</span><span class="n">Sz</span><span class="p">(</span><span class="n">zi</span><span class="p">),</span> <span class="n">Tz</span><span class="p">(</span><span class="n">zi</span><span class="p">),</span> <span class="n">pi</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Far-field ocean density (kg m-3)</span>
+<span class="n">ρ_oi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pden</span><span class="p">(</span><span class="n">Si</span><span class="p">,</span> <span class="n">Ti</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Plume density (kg m-3)</span>
+<span class="n">gpi</span> <span class="o">=</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span><span class="n">ρ_oi</span> <span class="o">-</span> <span class="n">ρi</span><span class="p">)</span> <span class="o">/</span> <span class="n">ρ_0</span>  <span class="c1"># Reduced gravity (m s-2)</span>
+<span class="n">wi</span> <span class="o">=</span> <span class="p">(</span><span class="n">gpi</span> <span class="o">*</span> <span class="n">Qm2s</span> <span class="o">/</span> <span class="n">α</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Vertical velocity (m s-1), from balance of momentum and buoyancy for a line plume</span>
+<span class="n">Ri</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">/</span> <span class="n">wi</span>  <span class="c1"># Radius or thickness (m)</span>
+
+<span class="n">mass_flux</span> <span class="o">=</span> <span class="n">Qm2s</span>  <span class="c1"># Mass flux (m2 s-1)</span>
+<span class="n">mom_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">wi</span>  <span class="c1"># Momentum flux (m3 s-2)</span>
+<span class="n">T_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">Ti</span>  <span class="c1"># Temperature flux (C m2 s-1)</span>
+<span class="n">S_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">Si</span>  <span class="c1"># Salt flux (PSU m2 s-1)</span>
+
+<span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">Tz</span><span class="p">,</span> <span class="n">Sz</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">α</span><span class="p">,</span> <span class="n">ρ_0</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="n">fluxes0</span> <span class="o">=</span> <span class="p">[</span><span class="n">mass_flux</span><span class="p">,</span> <span class="n">mom_flux</span><span class="p">,</span> <span class="n">T_flux</span><span class="p">,</span> <span class="n">S_flux</span><span class="p">]</span>
+
+<span class="n">z_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">zi</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">dz</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">dz</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n_plumes</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_plumes_max</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">itgr</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span>
+        <span class="n">bpt</span><span class="o">.</span><span class="n">bpt</span><span class="p">,</span>
+        <span class="p">[</span><span class="n">zi</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+        <span class="n">fluxes0</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;RK45&quot;</span><span class="p">,</span>
+        <span class="n">t_eval</span><span class="o">=</span><span class="n">z_eval</span><span class="p">,</span>
+        <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+        <span class="n">events</span><span class="o">=</span><span class="n">bpt</span><span class="o">.</span><span class="n">Δρ</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">dz</span><span class="p">):</span>
+
+        <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        Number of plumes = </span><span class="si">{</span><span class="n">n_plumes</span><span class="si">}</span>
+<span class="s2">        Starting height of last plume = </span><span class="si">{</span><span class="n">zi</span><span class="si">:</span><span class="s2">1.2f</span><span class="si">}</span><span class="s2">  m</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">dedent</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+        <span class="k">break</span>
+
+    <span class="n">zi</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">t_events</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">Qm2s</span> <span class="o">=</span> <span class="n">Q</span><span class="o">/</span><span class="n">W</span>  <span class="c1"># Discharge rate per m (m2 s-1)</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pres</span><span class="p">(</span><span class="o">-</span><span class="n">zi</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>  <span class="c1"># Pressure (dbar)</span>
+    <span class="n">Ti</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">fp</span><span class="p">(</span><span class="n">Si</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>  <span class="c1"># Temperature is the freezing point (C)</span>
+    <span class="n">ρi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pden</span><span class="p">(</span><span class="n">Sz</span><span class="p">(</span><span class="n">zi</span><span class="p">),</span> <span class="n">Tz</span><span class="p">(</span><span class="n">zi</span><span class="p">),</span> <span class="n">pi</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Far-field ocean density (kg m-3)</span>
+    <span class="n">ρ_oi</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">pden</span><span class="p">(</span><span class="n">Si</span><span class="p">,</span> <span class="n">Ti</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Plume density (kg m-3)</span>
+    <span class="n">gpi</span> <span class="o">=</span> <span class="n">g</span> <span class="o">*</span> <span class="p">(</span><span class="n">ρ_oi</span> <span class="o">-</span> <span class="n">ρi</span><span class="p">)</span> <span class="o">/</span> <span class="n">ρ_0</span>  <span class="c1"># Reduced gravity (m s-2)</span>
+    <span class="n">wi</span> <span class="o">=</span> <span class="p">(</span><span class="n">gpi</span> <span class="o">*</span> <span class="n">Qm2s</span> <span class="o">/</span> <span class="n">α</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Vertical velocity (m s-1), from balance of momentum and buoyancy for a line plume</span>
+    <span class="n">Ri</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">/</span> <span class="n">wi</span>  <span class="c1"># Radius or thickness (m)</span>
+
+    <span class="n">mass_flux</span> <span class="o">=</span> <span class="n">Qm2s</span>  <span class="c1"># Mass flux (m2 s-1)</span>
+    <span class="n">mom_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">wi</span>  <span class="c1"># Momentum flux (m3 s-2)</span>
+    <span class="n">T_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">Ti</span>  <span class="c1"># Temperature flux (C m2 s-1)</span>
+    <span class="n">S_flux</span> <span class="o">=</span> <span class="n">Qm2s</span> <span class="o">*</span> <span class="n">Si</span>  <span class="c1"># Salt flux (PSU m2 s-1)</span>
+    <span class="n">fluxes0</span> <span class="o">=</span> <span class="p">[</span><span class="n">mass_flux</span><span class="p">,</span> <span class="n">mom_flux</span><span class="p">,</span> <span class="n">T_flux</span><span class="p">,</span> <span class="n">S_flux</span><span class="p">]</span>
+
+    <span class="n">z_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">zi</span> <span class="o">/</span> <span class="n">dz</span><span class="p">)</span> <span class="o">*</span> <span class="n">dz</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">dz</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">dz</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of plumes = 94
+Starting height of last plume = -1.54  m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="n">mass_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">mom_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">T_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">S_flux</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">mom_flux</span> <span class="o">/</span> <span class="n">mass_flux</span>  <span class="c1"># Plume vertical velocity (m s-1)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">mass_flux</span> <span class="o">/</span> <span class="n">w</span>  <span class="c1"># Plume thickness or radius (m)</span>
+    <span class="n">T_o</span> <span class="o">=</span> <span class="n">T_flux</span> <span class="o">/</span> <span class="n">mass_flux</span>  <span class="c1"># Plume temperature (C)</span>
+    <span class="n">S_o</span> <span class="o">=</span> <span class="n">S_flux</span> <span class="o">/</span> <span class="n">mass_flux</span>  <span class="c1"># Plume salinity (PSU)</span>
+    <span class="n">z_out</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">t</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature [C$^\circ$]&quot;</span><span class="p">)</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Salinity [PSU]&quot;</span><span class="p">)</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Vertical velocity [m s$^{-1}$]&quot;</span><span class="p">)</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Thickness [m]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ambient&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;C0&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:15: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+&lt;&gt;:15: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+/tmp/ipykernel_2201/3450213895.py:15: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+  axs[0, 0].set_xlabel(&quot;Temperature [C$^\circ$]&quot;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0fe25b4e90&gt;
+</pre></div>
+</div>
+<img alt="_images/1295b1266007a4f231f571155ce62e71c7edca6afb8b915d7052bea4184149c8.png" src="_images/1295b1266007a4f231f571155ce62e71c7edca6afb8b915d7052bea4184149c8.png" />
+</div>
+</div>
+</section>
+<section id="simple-solver-interface">
+<h2>Simple solver interface<a class="headerlink" href="#simple-solver-interface" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">melt_plumes</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve</span>
+
+<span class="n">w</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">T_o</span><span class="p">,</span> <span class="n">S_o</span><span class="p">,</span> <span class="n">z_out</span> <span class="o">=</span> <span class="n">solve</span><span class="o">.</span><span class="n">plume</span><span class="p">(</span><span class="o">-</span><span class="mi">165</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;plume&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature [C$^\circ$]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Salinity [PSU]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Vertical velocity [m s$^{-1}$]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Thickness [m]&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;z [m]&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+&lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+/tmp/ipykernel_2201/1914993096.py:8: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+  axs[0, 0].set_xlabel(&quot;Temperature [C$^\circ$]&quot;)
+</pre></div>
+</div>
+<img alt="_images/88f761ea096dc02bd3ffca5ffbed69d77383db27381b515652f5e9214b9911e0.png" src="_images/88f761ea096dc02bd3ffca5ffbed69d77383db27381b515652f5e9214b9911e0.png" />
+</div>
+</div>
+</section>
+<section id="ambient-plume-with-and-without-horizontal-velocity">
+<h2>Ambient plume with and without horizontal velocity<a class="headerlink" href="#ambient-plume-with-and-without-horizontal-velocity" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">w</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">T_o</span><span class="p">,</span> <span class="n">S_o</span><span class="p">,</span> <span class="n">z_out</span> <span class="o">=</span> <span class="n">solve</span><span class="o">.</span><span class="n">plume</span><span class="p">(</span><span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="mf">0.0000001</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">Tz</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="n">Sz</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">w_u</span><span class="p">,</span> <span class="n">R_u</span><span class="p">,</span> <span class="n">T_o_u</span><span class="p">,</span> <span class="n">S_o_u</span><span class="p">,</span> <span class="n">z_out_u</span> <span class="o">=</span> <span class="n">solve</span><span class="o">.</span><span class="n">plume</span><span class="p">(</span><span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="mf">0.0000001</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">Tz</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="n">Sz</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_o_u</span><span class="p">,</span> <span class="n">z_out_u</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;+u&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature [C$^\circ$]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S_o_u</span><span class="p">,</span> <span class="n">z_out_u</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Salinity [PSU]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">z_out</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_u</span><span class="p">,</span> <span class="n">z_out_u</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Vertical velocity [m s$^{-1}$]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">z_out</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R_u</span><span class="p">,</span> <span class="n">z_out_u</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Thickness [m]&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;z [m]&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+&lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+/tmp/ipykernel_2201/1577880902.py:8: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+  axs[0, 0].set_xlabel(&quot;Temperature [C$^\circ$]&quot;)
+</pre></div>
+</div>
+<img alt="_images/428245b4f6600e745d19e695dc462e527be8ee4cb86cbd42a1c21ece691e8f1c.png" src="_images/428245b4f6600e745d19e695dc462e527be8ee4cb86cbd42a1c21ece691e8f1c.png" />
+</div>
+</div>
+</section>
+<section id="plume-chain-with-nonuniform-horizontal-velocity">
+<h2>Plume chain with nonuniform horizontal velocity<a class="headerlink" href="#plume-chain-with-nonuniform-horizontal-velocity" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linear velocity profile</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">u</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">uzmin</span><span class="p">,</span> <span class="n">zmin</span><span class="p">):</span>
+    <span class="n">dudz</span> <span class="o">=</span> <span class="p">(</span><span class="n">uzmin</span> <span class="o">-</span> <span class="n">u0</span><span class="p">)</span><span class="o">/</span><span class="n">zmin</span>
+    <span class="k">return</span> <span class="n">dudz</span><span class="o">*</span><span class="n">z</span> <span class="o">+</span> <span class="n">u0</span>
+
+<span class="n">uz</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">u</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="o">-</span><span class="mi">165</span><span class="p">)</span>
+
+<span class="n">w</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">T_o</span><span class="p">,</span> <span class="n">S_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">solve</span><span class="o">.</span><span class="n">plume_chain</span><span class="p">(</span><span class="o">-</span><span class="mi">165</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">Tz</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="n">Sz</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="n">uz</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Comopare to constant velocity case</span>
+<span class="n">w_const</span><span class="p">,</span> <span class="n">R_const</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">z_out_const</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">solve</span><span class="o">.</span><span class="n">plume_chain</span><span class="p">(</span><span class="o">-</span><span class="mi">165</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">Tz</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="n">Sz</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mf">0.06</span><span class="p">,</span> <span class="n">W</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of plumes = 24
+Starting height of last plume = -2.09  m
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of plumes = 25
+Starting height of last plume = -3.05  m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">uz</span><span class="p">(</span><span class="n">z_out</span><span class="p">),</span> <span class="n">z_out</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Horizontal velocity [m s$^{-1}$]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Height [m]&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_o</span><span class="p">[</span><span class="n">idx</span> <span class="o">==</span> <span class="mi">10</span><span class="p">],</span> <span class="n">z_out</span><span class="p">[</span><span class="n">idx</span> <span class="o">==</span> <span class="mi">10</span><span class="p">],</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature [C$^\circ$]&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S_o</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S_o</span><span class="p">[</span><span class="n">idx</span> <span class="o">==</span> <span class="mi">10</span><span class="p">],</span> <span class="n">z_out</span><span class="p">[</span><span class="n">idx</span> <span class="o">==</span> <span class="mi">10</span><span class="p">],</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Salinity [PSU]&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="mi">29</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_const</span><span class="p">,</span> <span class="n">z_out_const</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">idx</span> <span class="o">==</span> <span class="mi">10</span><span class="p">],</span> <span class="n">z_out</span><span class="p">[</span><span class="n">idx</span> <span class="o">==</span> <span class="mi">10</span><span class="p">],</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Vertical velocity [m s$^{-1}$]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">z_out</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sheared&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R_const</span><span class="p">,</span> <span class="n">z_out_const</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="n">idx</span> <span class="o">==</span> <span class="mi">10</span><span class="p">],</span> <span class="n">z_out</span><span class="p">[</span><span class="n">idx</span> <span class="o">==</span> <span class="mi">10</span><span class="p">],</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Thickness [m]&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ambient&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;C0&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+/tmp/ipykernel_2201/1328383204.py:10: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+  axs[0, 0].set_xlabel(&quot;Temperature [C$^\circ$]&quot;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0fe1dbede0&gt;
+</pre></div>
+</div>
+<img alt="_images/693c433f6bdd02499ec934c478221787ded110922fa31b6eaf6907108b9aeb7f.png" src="_images/693c433f6bdd02499ec934c478221787ded110922fa31b6eaf6907108b9aeb7f.png" />
+<img alt="_images/1c89891cbcc83bd971cf1b0cb99c0828531b24f361111357963ed054a396cedb.png" src="_images/1c89891cbcc83bd971cf1b0cb99c0828531b24f361111357963ed054a396cedb.png" />
+</div>
+</div>
+</section>
+<section id="the-freezing-point-approximation">
+<h2>The freezing point approximation<a class="headerlink" href="#the-freezing-point-approximation" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="n">fpmin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.8</span>
+<span class="n">fpmax</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.4</span>
+
+<span class="n">dg</span><span class="p">,</span> <span class="n">Sg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+
+<span class="n">Tlinear</span> <span class="o">=</span> <span class="n">bpt</span><span class="o">.</span><span class="n">fp</span><span class="p">(</span><span class="o">-</span><span class="n">dg</span><span class="p">,</span> <span class="n">Sg</span><span class="p">)</span>
+
+<span class="n">Teos80</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">fp</span><span class="p">(</span><span class="n">Sg</span><span class="p">,</span> <span class="n">sw</span><span class="o">.</span><span class="n">pres</span><span class="p">(</span><span class="n">dg</span><span class="p">,</span> <span class="mi">60</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">PC0</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">dg</span><span class="p">,</span> <span class="n">Sg</span><span class="p">,</span> <span class="n">Teos80</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">fpmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">fpmax</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">dg</span><span class="p">,</span> <span class="n">Sg</span><span class="p">,</span> <span class="n">Tlinear</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">fpmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">fpmax</span><span class="p">)</span>
+<span class="n">PC1</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">dg</span><span class="p">,</span> <span class="n">Sg</span><span class="p">,</span> <span class="n">Tlinear</span> <span class="o">-</span> <span class="n">Teos80</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;plasma&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">PC0</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)),</span> <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">PC1</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="mf">0.93</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.015</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)))</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f0fe28bc5c0&gt;
+</pre></div>
+</div>
+<img alt="_images/e2329a30332a4709d99491ad0ec8234d8345b47f603b6daaee98773731263caa.png" src="_images/e2329a30332a4709d99491ad0ec8234d8345b47f603b6daaee98773731263caa.png" />
+</div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="license.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">License</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>
