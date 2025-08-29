@@ -5,9 +5,7 @@ import scipy.integrate as itgr
 import scipy.interpolate as itpl
 import seawater as sw
 
-from melt_plumes import bpt
-from melt_plumes import helpers
-from melt_plumes import solve
+from melt_plumes import bpt, helpers, solve
 
 
 def test_linearized_freezing_point_equation() -> None:

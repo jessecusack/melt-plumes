@@ -1,8 +1,4 @@
-from typing import Callable
-from typing import List
-from typing import Sequence
-from typing import Tuple
-from typing import Union
+from typing import Callable, List, Sequence, Tuple, Union
 
 import seawater as sw
 
@@ -205,9 +201,7 @@ def bpt(
     dfluxes = [0, 0, 0, 0]
     dfluxes[0] = α * w + m  # Mass
     dfluxes[1] = R * gp - C_d * w**2  # Momentum
-    dfluxes[2] = (
-        α * w * T_o + m * T_b - C_d**0.5 * U * Γ_T * (T_p - T_b)
-    )  # Temperature
+    dfluxes[2] = α * w * T_o + m * T_b - C_d**0.5 * U * Γ_T * (T_p - T_b)  # Temperature
     dfluxes[3] = α * w * S_o + m * S_b - C_d**0.5 * U * Γ_S * (S_p - S_b)  # Salinity
     return dfluxes
 

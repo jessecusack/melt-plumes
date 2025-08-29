@@ -1,7 +1,5 @@
 from textwrap import dedent
-from typing import Callable
-from typing import Tuple
-from typing import Union
+from typing import Callable, Tuple, Union
 
 import numpy as np
 import seawater as sw
