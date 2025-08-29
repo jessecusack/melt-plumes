@@ -1,6 +1,6 @@
 # Melt Plumes
 
-See the [documentation](https://melt-plumes.readthedocs.io).
+See the [documentation](https://jessecusack.github.io/melt-plumes/).
 
 ## Installation
 
