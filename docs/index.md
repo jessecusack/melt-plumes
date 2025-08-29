@@ -26,14 +26,15 @@ hidden:
 maxdepth: 1
 ---
 
-quick_start
 License <license>
 ```
 
+# Melt Plumes
+
+The documentation starts with the nuts and bolts. If you want to skip some details, go straight to the section Simple Solver Interface below. 
 
 # Quick Start
 
-Import packages.
 
 ```{code-cell} ipython3
 import numpy as np
