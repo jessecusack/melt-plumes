@@ -3,11 +3,11 @@ authors = [
     {name = "Jesse Cusack", email = "jesse.cusack@oregonstate.edu"},
 ]
 license = {text = "MIT"}
-requires-python = "<4.0,>=3.8"
+requires-python = ">3.11"
 dependencies = [
-    "numpy<2.0.0,>=1.23.5",
-    "scipy<2.0.0,>=1.9.3",
-    "seawater<4.0.0,>=3.3.4",
+    "numpy>=1.24.4",
+    "scipy>=1.10.1",
+    "seawater>=3.3.5",
 ]
 name = "melt-plumes"
 version = "0.1.0"
@@ -30,6 +30,7 @@ dev = [
     "myst-nb<1.0.0,>=0.17.1",
     "pytest>=8.3.5",
     "ruff>=0.12.11",
+    "scipy-stubs>=1.16.1.1",
 ]
 
 [tool.coverage.paths]

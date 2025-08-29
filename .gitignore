@@ -1,28 +1,16 @@
-# Byte-compiled / optimized / DLL files
+# Caches
 __pycache__/
-
-# Unit test / coverage reports
 .mypy_cache/
-/.coverage
-/.coverage.*
-/.nox/
-/.python-version
-/.pytype/
+.pytest_cache
+.ruff_cache
+.venv*
 
-# Distribution / packaging
-/dist/
-/src/*.egg-info/
-
-# Sphinx documentation
+# Docs
 /docs/_build/
 /docs/*.ipynb
 /docs/jupyter_execute/
 
-# Jupyter Notebooks
 .ipynb_checkpoints
-
-# Operating system files
 .DS_Store
-.venv
-.pytest_cache
-.ruff_cache
+
+

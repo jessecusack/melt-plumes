@@ -1,7 +1,6 @@
 """Sphinx configuration."""
 project = "Melt Plumes"
 author = "Jesse Cusack"
-copyright = "2022, Jesse Cusack"
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
@@ -9,16 +8,24 @@ extensions = [
 ]
 autodoc_typehints = "description"
 html_theme = "furo"
-nb_custom_formats = {
-    ".md": ["jupytext.reads", {"fmt": "mystnb"}],
-}
-exclude_patterns = ["*.ipynb"]
-nb_execution_excludepatterns = [
-    "*.ipynb",
-    "usage.md",
-    "codeofconduct.md",
-    "contributing.md",
-    "index.md",
-    "license.md",
-    "reference.md",
+myst_enable_extensions = [
+    "dollarmath",
+    "amsmath",
+    "colon_fence",
+    "deflist",
+    "html_admonition",
+    "html_image",
+    "replacements",
+    "smartquotes",
+    "substitution",
+    "tasklist",
 ]
+
+source_suffix = {
+    ".rst": "restructuredtext",
+    ".md": "myst-nb",
+}
+
+master_doc = "index"
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+nbsphinx_execute = "always"
