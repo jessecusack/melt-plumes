@@ -23,3 +23,6 @@ __pycache__/
 
 # Operating system files
 .DS_Store
+.venv
+.pytest_cache
+.ruff_cache
