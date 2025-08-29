@@ -1,4 +1,5 @@
 """Sphinx configuration."""
+
 project = "Melt Plumes"
 author = "Jesse Cusack"
 extensions = [
